@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+<!--login button-->
+{% block login %}
+<a href="/logout/" class="btn btn-outline-danger my-2 my-sm-0 text-decoration-none">logout</a> {% endblock login %}
+
+<!--Content-->
+{% block content %}
+
+<br />
+<div class="transbox container">
+    <center>
+        <h1><b> Welcome {{user}}!</b>
+            <br /><br /><br />
+            <div class="container">
+                <form class="form" action="#" method="POST">
+                    <input class="form-control form-control-lg w-50" type="text" placeholder="Type a movie name here" name="movie">
+                    <button class="btn btn-dark" type="submit">Search</button>
+                </form>
+            </div>
+        </h1>
+    </center>
+</div>
+
+{% endblock content%}

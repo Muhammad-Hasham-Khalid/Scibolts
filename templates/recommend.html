@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+<!--login button-->
+{% block login %}
+<a href="/logout/" class="btn btn-outline-danger my-2 my-sm-0 text-decoration-none">logout</a> {% endblock login %}
+
+<!--Content-->
+{% block content %}
+<br />
+<div class="transbox container">
+        <a href="/user/" class="btn btn-outline-dark float-right text-decoration-none">Search Again</a>
+    <br />
+    <br />
+    <center>
+        <div>
+            {% if movies %}
+            <h1>
+                <b>So here are some movies for you {{user}} related to your search, hope you'll like them.</b>
+            </h1>
+            <br /><br /><br />
+                <div class="d-flex flex-wrap align-content-around">
+                    {% for movie in movies %}
+                        <span class="rounded-pill movie-box">
+                            <b>{{ movie }}</b>
+                        </span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="container text-danger rounded-pill">
+                    <h1><b>Sorry! we are unable to find any movies :(</b></h1>
+                </div>
+            {% endif %}
+        </div>
+    </center>
+</div>
+
+
+{% endblock content%}

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+<!--Content-->
+{% block content %}
+
+<br />
+
+<div class="container transbox">
+    <div class="row">
+        <div class="col-6">
+            <h1>
+                <b>Find the best movies for your taste !!!</b>
+            </h1>
+            <p>
+                What you have to do is to Signup/login and just search some movies you like and we'll suggest you more according on your taste!
+            </p>
+        </div>
+        <div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade col-6 rounded-circle" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-interval="5000">
+                    <img src="/static/images/image-1.jpg" class="img-fluid w-100 h-100">
+                </div>
+                <div class="carousel-item" data-interval="5000">
+                    <img src="/static/images/image-2.jpg" class="img-fluid w-100 h-100">
+                </div>
+                <div class="carousel-item" data-interval="5000">
+                    <img src="/static/images/image-3.png" class="img-fluid w-100 h-100">
+                </div>
+            </div>
+        </div>
+    </div>
+    <br /><br />
+    <hr />
+    <br /><br />
+    <div id="about">
+        <div class="row">
+            <div class="col-6">
+                <img src="{{url_for('static', filename='images/about.jpg')}}" class="img-fluid rounded" />
+            </div>
+            <div class="col-6">
+                    <h1><b>About Us</b></h1>
+                <p class="d-flex align-items-center">
+                    We are a team of developers making it easy for you to find better movies based on your taste.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content%}

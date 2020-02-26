@@ -81,8 +81,3 @@ df_result.columns = ['Movies', 'Ratings']
 df_result = df_result.sort_values(by=['Ratings'], ascending=False)
 df_result.index = range(1, 11)
 '''
-
-try:
-    print(recommendation('Jurassic Park'))
-except Exception as E:
-    print(E)

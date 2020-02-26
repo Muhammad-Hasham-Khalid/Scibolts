@@ -13,18 +13,39 @@
     <br />
     <center>
         <div>
-            {% if movies %}
-            <h1>
-                <b>So here are some movies for you {{user}} related to your search, hope you'll like them.</b>
-            </h1>
-            <br /><br /><br />
+            {% if movies or movies_tf%}
+                <h1>
+                    <b>So here are some movies for you {{user}} related to your search, hope you'll like them.</b>
+                </h1>
+                <br /><br /><br />
+                <!--For KNN-->
+                {% if movies %}
+            <center><h2><b>Using KNN</b></h2></center>
+                    <div class="d-flex flex-wrap align-content-around">
+                        {% for movie in movies %}
+                            <span class="rounded-pill movie-box">
+                                <b>{{ movie }}</b>
+                            </span>
+                        {% endfor %}
+                    </div>
+                <br /><br />
+                {% else %}
+            <h3<b>No movies found by KNN</b></h3>
+                {% endif %}
+                <!--FOR TFIDF-->
+                {%if movies_tf%}
+            <center><h2><b>Using TFIDF</b></h2></center>
                 <div class="d-flex flex-wrap align-content-around">
-                    {% for movie in movies %}
-                        <span class="rounded-pill movie-box">
-                            <b>{{ movie }}</b>
-                        </span>
-                    {% endfor %}
-                </div>
+                        {% for movie in movies_tf %}
+                            <span class="rounded-pill movie-box">
+                                <b>{{ movie }}</b>
+                            </span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+            <h3><b>No movies found by TFIDF</b></h3>
+                {%endif%}
+            
             {% else %}
                 <div class="container text-danger rounded-pill">
                     <h1><b>Sorry! we are unable to find any movies :(</b></h1>

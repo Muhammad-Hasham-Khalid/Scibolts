@@ -2,6 +2,7 @@ from flask import Flask, render_template, url_for, request, session, flash, redi
 from datetime import timedelta
 from flask_sqlalchemy import SQLAlchemy
 from Algorithm import resultant
+from Tfidf import recommendation
 
 #init
 app = Flask(__name__)
@@ -97,14 +98,26 @@ def logout():
 def movies():
     if 'user' in session:
         movies = []
+        movies_tf = []
         if 'movie' in session:
             try:
+                print("KNN:")
                 movies = resultant(session['movie'])
-                print("Successfully found movies!!", movies)
+                if movies:
+                    print("Successfully found movies!!", movies)
+                else:
+                    print("No movies found!")
             except Exception:
                 flash("Sorry we were not able to find that movie!", 'info')
                 return redirect(url_for('user'))
-        return render_template('recommend.html', user=session['user'], movies=movies)
+            try:
+                print("TFIDF:")
+                movies_tf = recommendation(session['movie'])
+                print("Found movies: ", movies_tf)
+                movies_tf.append(session['movie'])
+            except Exception as E:
+                print(E)
+        return render_template('recommend.html', user=session['user'], movies=movies, movies_tf=movies_tf)
     else:
         flash('Please SignUp/Login first!', 'error')
         return redirect(url_for('login'))
